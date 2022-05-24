@@ -22,10 +22,45 @@ const [words] = useState(wordList);
 
 const [pickedWord,setPickedWord] = useState("");
 const [pickedCategory, setPickedCategory]=useState("");
+const [letters, setLetters] = useState([]);
 
-console.log(words);
+//console.log(words);
+
+const pickWordAndCategory=()=>{
+   //acessar de forma aleatoria uma categoria
+  const categories = Object.keys(words);
+  const category=categories[Math.floor(Math.random()* Object.keys(categories).length)]
+
+ // console.log(category)
+
+  //acessar de forma aleatoria uma palavra
+  const word = words[category][Math.floor(Math.random()* words[category].length)]
+//console.log(word)
+
+//retornando o valor
+return {word, category};
+
+}
 //starts no game
 const startGame=()=>{
+
+  //funcao de pickword e pictcaterogy
+const {word, category} = pickWordAndCategory();
+//console.log(word, category)
+
+//criar um array de letras 
+
+let wordLetters =word.split("");
+wordLetters=wordLetters.map((l)=>l.toLowerCase())
+
+//console.log(wordLetters)
+
+
+//setar estados
+setPickedWord(word);
+setPickedCategory(category);
+setLetters(letters);
+  //iniciando
   setGameStage(stages[1].name)
 }
 

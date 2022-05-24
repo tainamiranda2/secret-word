@@ -1,20 +1,15 @@
 export const wordList={
-  classes:["modelo","planejamento","classificar"],
-  classes_abstratas:[],
+ alimentos:["arroz","feijão","maracarrão"],
+  //classes_abstratas:[],
   
   objeto:["mesa", "bicicleta","carro","caneta","celular","comportamentos","estados"],
   
-  atributos:["valor","peso","cor","modelo"],
+  mistura:["carne","frango","figado","moela"],
   
-  metodos:["pintar","contar"],
+  frutas:["maça","goiaba", "pera", "uva"],
   
-  interfaces:["contato","serviços"],
+  latcinios:["queijo","leite","danone"],
   
-  encapsulamento:["capsula","pilha","enveloper","padrao","ocultar","invisiblidade"],
-  
-  heranca:[],
-  
-  polimorfismo:["formas"]
   
 }
 
