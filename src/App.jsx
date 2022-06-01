@@ -55,7 +55,6 @@ wordLetters=wordLetters.map((l)=>l.toLowerCase())
 
 //console.log(wordLetters)
 
-
 //setar estados
 setPickedWord(word);
 setPickedCategory(category);
