@@ -1,7 +1,16 @@
 import React from 'react';
 import './Game.css'
 
-export const Game=({verifyLetter})=>{
+export const Game=({
+    verifyLetter,
+     pickedWord, 
+     pickedCategory,
+      letters,
+       guessedLetters, 
+       wrongLetters,
+        guesses,
+          score
+        })=>{
     return (
         <>
       {/*   <h1>Jogar</h1>
@@ -9,25 +18,35 @@ export const Game=({verifyLetter})=>{
         */}
         <div className='game'>
             <p className='points'>
-                <span>Pontuação: 000</span>
+                <span>Pontuação: {score}</span>
             </p>
+
             <h1>Adivinhe a palavra</h1>
             <h3 className='tip'>Dica sobre a palavra:
-            <span>Dica ...</span>
+            <span>{pickedCategory}</span>
             </h3>
-
+        <p>Voce ainda tm xxx tentativas(s) {guesses}</p>
             <div className="wordContainer">
-                <span className='letter'>A</span>
-                <span className='blackSquare'></span>
+                {letters.map((letter, i)=>(
+                    guessedLetters.includes(letter) ? (
+             <span key={i} className='letter'>A</span>
+                    ):(
+
+                <span key={i} className='blackSquare'></span>
+                    )
+                ))}
+                
             </div>
 
         <div className="letterContainer">
+        <p>Tente adivinnhar a letra da palavra:</p>
+
             <form>
-            <p>Tente adivinnhar a letra da palavra</p>
             <input type='text' name='letter' maxLength='1' required/>
         
         <button>Jogar</button>
         </form>
+
         </div>
 
             <div className="wordLettersContainer">
