@@ -68,9 +68,30 @@ setLetters(letters);
 }
 
 //processas os inputs
-const verifyLetter=()=>{
+const verifyLetter=(letter)=>{
 
-setGameStage(stages[2].name);
+//setGameStage(stages[2].name);
+
+const normalizeLetter=letter.toLowerCase();
+//checar se letrar é utilizada
+if(
+  guessedLetters.includes() ||
+  wrongLetters.includes()
+  ){
+    return;
+  }
+  //push guessed letter ou remove
+if(letters.includes(normalizeLetter)){
+  setGuessedLetters((actualGuessesdLetters)=>[
+    ...actualGuessesdLetters,
+    normalizeLetter
+  ])
+
+}else{
+setWongLetters,
+normalizeLetter
+
+}
 
 }
 
