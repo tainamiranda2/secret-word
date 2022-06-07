@@ -1,4 +1,5 @@
-import React, { useState, useRef } from 'react';
+import React from 'react'
+import { useState, useRef } from 'react';
 import './Game.css'
 
 export const Game=({
@@ -11,7 +12,8 @@ export const Game=({
         guesses,
           score
         })=>{
-         const [letter, setLetter]= useState("");
+
+const [letter, setLetter]= useState("");
 const letterInputRed=useRef(null);
 
 const handleSubmit =(e)=>{
@@ -39,11 +41,11 @@ letterInputRed.current.focus();
             <h3 className='tip'>Dica sobre a palavra:
             <span>{pickedCategory}</span>
             </h3>
-        <p>Voce ainda tm xxx tentativas(s) {guesses}</p>
+        <p>Voce ainda tem {guesses} tentativas(s) </p>
             <div className="wordContainer">
                 {letters.map((letter, i)=>(
                     guessedLetters.includes(letter) ? (
-             <span key={i} className='letter'>A</span>
+             <span key={i} className='letter'>{letter}</span>
                     ):(
 
                 <span key={i} className='blackSquare'></span>

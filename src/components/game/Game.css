@@ -16,7 +16,8 @@ padding: 1.5em;
 border: 20px solid #ecfa00;
 display: flex;
 }
-.letter, .blackSquare{
+.letter,
+.blackSquare{
     font-size: 70px;
     line-height: 1.5;
     border: 3px solid #000;

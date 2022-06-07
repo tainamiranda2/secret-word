@@ -17,7 +17,7 @@ const stages=[
 ]
 
 function App() {
-const [gameStage,setGameStage]=useState(stages[0].name)
+const [gameStage,setGameStage]=useState(stages[0].name);
 const [words] = useState(wordList);
 
 const [pickedWord,setPickedWord] = useState("");
@@ -62,7 +62,7 @@ wordLetters=wordLetters.map((l)=>l.toLowerCase())
 //setar estados
 setPickedWord(word);
 setPickedCategory(category);
-setLetters(letters);
+setLetters(wordLetters);
   //iniciando
   setGameStage(stages[1].name)
 }
@@ -88,10 +88,14 @@ if(letters.includes(normalizeLetter)){
   ])
 
 }else{
-setWongLetters,
-normalizeLetter
+setWongLetters((actualGuessesdLetters)=>[
+  ...actualGuessesdLetters,
+  normalizeLetter
+]);
 
 }
+console.log(guessedLetters);
+console.log(wrongLetters)
 
 }
 
@@ -105,7 +109,8 @@ const retry=()=>{
 {gameStage==='start' && <Star startGame={startGame}/>}
 
 {gameStage==='game' &&
- <Game verifyLetter={verifyLetter}
+ <Game
+  verifyLetter={verifyLetter}
  pickedWord={pickedWord}
  pickedCategory={pickedCategory}
  letters={letters}
