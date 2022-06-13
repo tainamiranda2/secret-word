@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 //dados
 import {wordList} from './data/word'
 
@@ -69,14 +69,14 @@ setLetters(wordLetters);
 
 //processas os inputs
 const verifyLetter=(letter)=>{
-
+console.log(letter)
 //setGameStage(stages[2].name);
 
-const normalizeLetter=letter.toLowerCase();
+ const normalizeLetter=letter.toLowerCase();
 //checar se letrar é utilizada
 if(
-  guessedLetters.includes() ||
-  wrongLetters.includes()
+  guessedLetters.includes(normalizeLetter) ||
+  wrongLetters.includes(normalizeLetter)
   ){
     return;
   }
@@ -85,19 +85,26 @@ if(letters.includes(normalizeLetter)){
   setGuessedLetters((actualGuessesdLetters)=>[
     ...actualGuessesdLetters,
     normalizeLetter
-  ])
-
+  ]);
+//letters wrong
 }else{
-setWongLetters((actualGuessesdLetters)=>[
-  ...actualGuessesdLetters,
+setWongLetters((actualWrongLetters)=>[
+  ...actualWrongLetters,
   normalizeLetter
 ]);
+  setGuesses((actualGuesses)=> actualGuesses -1 )
+}
+//console.log(guessedLetters);
+//console.log(wrongLetters)
 
 }
-console.log(guessedLetters);
-console.log(wrongLetters)
 
-}
+useEffect(()=>{
+  if(guesses <=0){
+    setGameStage(stages[2].name);
+
+  }
+}, [guesses])
 
 //reiniciar o jogo
 const retry=()=>{

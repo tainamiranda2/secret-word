@@ -19,7 +19,7 @@ const letterInputRed=useRef(null);
 const handleSubmit =(e)=>{
 e.preventDefault();
 //ativando a função
-verifyLetter();
+verifyLetter(letter);
 //apagar depois de utlizado
 setLetter("");
 
