@@ -16,6 +16,8 @@ const stages=[
 
 ]
 
+const guessesQty=3;
+
 function App() {
 const [gameStage,setGameStage]=useState(stages[0].name);
 const [words] = useState(wordList);
@@ -26,7 +28,7 @@ const [letters, setLetters] = useState([]);
 
 const [guessedLetters, setGuessedLetters] = useState([]); ///letras adivinhadas
 const [wrongLetters, setWongLetters]= useState([]); //letras erradas
-const [guesses, setGuesses] =useState(3) //tentaivas de úsuario
+const [guesses, setGuesses] =useState(guessesQty) //tentaivas de úsuario
 const [score,setScore]=useState(0); //pontuação do usuairo
 //console.log(words);
 
@@ -98,9 +100,17 @@ setWongLetters((actualWrongLetters)=>[
 //console.log(wrongLetters)
 
 }
+//funcção para limpar
+const clearLetterState=()=>{
+setGuessedLetters([]);
+setWongLetters([]);
+
+}
+
 
 useEffect(()=>{
   if(guesses <=0){
+    clearLetterState();
     setGameStage(stages[2].name);
 
   }
@@ -108,6 +118,8 @@ useEffect(()=>{
 
 //reiniciar o jogo
 const retry=()=>{
+  setScore(0);
+  setGuesses(guessesQty)
   setGameStage(stages[0].name);
 
 }
@@ -127,7 +139,10 @@ const retry=()=>{
  score={score}
  />}
 
-{gameStage==='end' && <GameOver retry={retry}/>}
+{gameStage==='end' && <GameOver 
+retry={retry}
+score={score}
+/>}
 
 </>
 
