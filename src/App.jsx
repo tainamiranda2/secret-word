@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import { useState, useEffect } from 'react';
+import { useState, useEffect , useCallback} from 'react';
 //dados
 import {wordList} from './data/word'
 
@@ -32,7 +32,7 @@ const [guesses, setGuesses] =useState(guessesQty) //tentaivas de úsuario
 const [score,setScore]=useState(0); //pontuação do usuairo
 //console.log(words);
 
-const pickWordAndCategory=()=>{
+const pickWordAndCategory=useCallback( ()=>{
    //acessar de forma aleatoria uma categoria
   const categories = Object.keys(words);
   const category=categories[Math.floor(Math.random()* Object.keys(categories).length)]
@@ -46,10 +46,11 @@ const pickWordAndCategory=()=>{
 //retornando o valor
 return {word, category};
 
-}
+},[words]);
 //starts no game
-const startGame=()=>{
-
+const startGame=useCallback( ()=>{
+//limpar letras
+clearLetterState();
   //funcao de pickword e pictcaterogy
 const {word, category} = pickWordAndCategory();
 //console.log(word, category)
@@ -67,7 +68,7 @@ setPickedCategory(category);
 setLetters(wordLetters);
   //iniciando
   setGameStage(stages[1].name)
-}
+}, [pickWordAndCategory]);
 
 //processas os inputs
 const verifyLetter=(letter)=>{
@@ -107,14 +108,27 @@ setWongLetters([]);
 
 }
 
-
+//checar as tentativas
 useEffect(()=>{
   if(guesses <=0){
     clearLetterState();
     setGameStage(stages[2].name);
 
   }
-}, [guesses])
+}, [guesses]);
+
+//checar as condições
+useEffect(()=>{
+//gerando novo array
+  const uniqueLetters=[... new Set(letters)];
+  console.log(uniqueLetters);
+//com condição
+  if(guessedLetters.length===uniqueLetters.length){
+    setScore((actualScore)=> (actualScore <=100));
+    startGame();
+  }
+
+}, [guessedLetters, letters,startGame])
 
 //reiniciar o jogo
 const retry=()=>{

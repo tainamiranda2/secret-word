@@ -1,14 +1,40 @@
 export const wordList={
- alimentos:["arroz","feijão","maracarrão"],
+ alimentos:["arroz",
+ "feijão",
+ "macarrão",
+"óleo",
+"vinagre"
+],
   //classes_abstratas:[],
   
-  objeto:["mesa", "bicicleta","carro","caneta","celular","comportamentos","estados"],
+  objeto:["mesa",
+   "bicicleta",
+   "carro",
+   "caneta",
+   "celular",
+   "notebook",
+   "moto"],
   
-  mistura:["carne","frango","figado","moela"],
+  mistura:["carne",
+  "frango",
+  "figado",
+  "hanburguer",
+  "salsicha",
+  "ovo",
+  "moela"],
   
-  frutas:["maça","goiaba", "pera", "uva"],
+  frutas:["maça",
+  "goiaba",
+   "pera",
+    "uva",
+     "coco",
+     "manga",
+     "morango"],
   
-  latcinios:["queijo","leite","danone"],
+  lanches:["pão de queijo",
+  "tortilete",
+  "bolo",
+  "pastel"],
   
   
 }
