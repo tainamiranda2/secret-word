@@ -124,7 +124,7 @@ useEffect(()=>{
   console.log(uniqueLetters);
 //com condição
   if(guessedLetters.length===uniqueLetters.length){
-    setScore((actualScore)=> (actualScore <=100));
+    setScore((actualScore)=> (actualScore +=100));
     startGame();
   }
 
@@ -133,7 +133,7 @@ useEffect(()=>{
 //reiniciar o jogo
 const retry=()=>{
   setScore(0);
-  setGuesses(guessesQty)
+  setGuesses(guessesQty);
   setGameStage(stages[0].name);
 
 }
